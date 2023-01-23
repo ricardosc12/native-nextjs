@@ -1,14 +1,30 @@
-import './globals.css'
+"use client"
+
+import './styles/globals.css'
+import Link from 'next/link'
+import { useState } from 'react'
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>{children}</body>
-    </html>
-  )
+
+  	const [text, setText] = useState('')
+
+	return (
+		<html lang="en">
+		<head />
+		<body>
+			<nav>
+			<ul>
+				<li>
+				<Link href="/">Home</Link>
+				</li>
+				<li>
+				<Link href="/about">Dashboard</Link>
+				</li>
+			</ul>
+			</nav>
+			<input value={text} onInput={(e)=>setText(e.target.value)} />
+			{children}
+		</body>
+		</html>
+	)
 }
